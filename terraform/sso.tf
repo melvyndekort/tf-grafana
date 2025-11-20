@@ -16,7 +16,7 @@ resource "grafana_sso_settings" "github" {
 
 resource "aws_cognito_user_pool_client" "grafana" {
   name         = "grafana"
-  user_pool_id = data.terraform_remote_state.cloudsetup.outputs.auth_user_pool_id
+  user_pool_id = data.terraform_remote_state.tf_cognito.outputs.auth_user_pool_id
 
   allowed_oauth_flows_user_pool_client = true
   allowed_oauth_flows                  = ["code", "implicit"]
