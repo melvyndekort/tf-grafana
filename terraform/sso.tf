@@ -40,7 +40,7 @@ resource "aws_cognito_user_pool_client" "grafana" {
   ]
 
   callback_urls = [
-    "https://mdekort.grafana.net/login/generic_oauth"
+    var.cognito_callback_url
   ]
 }
 
@@ -51,9 +51,9 @@ resource "grafana_sso_settings" "mdekort" {
 
   oauth2_settings {
     name                = "mdekort"
-    auth_url            = "https://auth.mdekort.nl/oauth2/authorize"
-    token_url           = "https://auth.mdekort.nl/oauth2/token"
-    api_url             = "https://auth.mdekort.nl/oauth2/userInfo"
+    auth_url            = var.oauth_auth_url
+    token_url           = var.oauth_token_url
+    api_url             = var.oauth_api_url
     client_id           = aws_cognito_user_pool_client.grafana.id
     client_secret       = aws_cognito_user_pool_client.grafana.client_secret
     allow_sign_up       = true

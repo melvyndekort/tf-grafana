@@ -1,8 +1,8 @@
 data "terraform_remote_state" "cloudsetup" {
   backend = "s3"
   config = {
-    bucket = "mdekort.tfstate"
+    bucket = var.tfstate_bucket
     key    = "cloudsetup.tfstate"
-    region = "eu-west-1"
+    region = var.aws_region
   }
 }

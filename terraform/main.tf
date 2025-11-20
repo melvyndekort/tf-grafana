@@ -1,10 +1,10 @@
 resource "grafana_cloud_stack" "mdekort" {
   provider = grafana.cloud
 
-  name        = "mdekort"
-  slug        = "mdekort"
-  region_slug = "eu"
-  description = "MDEKORT Grafana Cloud Stack"
+  name        = var.stack_name
+  slug        = var.stack_slug
+  region_slug = var.stack_region
+  description = var.stack_description
 }
 
 resource "grafana_cloud_stack_service_account" "terraform" {
