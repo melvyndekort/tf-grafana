@@ -12,6 +12,13 @@ data "grafana_role" "alerting_writer" {
   depends_on = [grafana_cloud_stack_service_account_token.terraform]
 }
 
+data "grafana_role" "folders_writer" {
+  provider = grafana.mdekort
+  name     = "fixed:folders:writer"
+
+  depends_on = [grafana_cloud_stack_service_account_token.terraform]
+}
+
 resource "grafana_role_assignment" "email_infra_dashboard_writer" {
   provider = grafana.mdekort
 
@@ -25,6 +32,15 @@ resource "grafana_role_assignment" "email_infra_alerting_writer" {
   provider = grafana.mdekort
 
   role_uid         = data.grafana_role.alerting_writer.uid
+  service_accounts = [grafana_cloud_stack_service_account.email_infra.id]
+
+  depends_on = [grafana_cloud_stack_service_account_token.terraform]
+}
+
+resource "grafana_role_assignment" "email_infra_folders_writer" {
+  provider = grafana.mdekort
+
+  role_uid         = data.grafana_role.folders_writer.uid
   service_accounts = [grafana_cloud_stack_service_account.email_infra.id]
 
   depends_on = [grafana_cloud_stack_service_account_token.terraform]
