@@ -28,7 +28,7 @@ resource "grafana_cloud_stack_service_account" "email_infra" {
   stack_slug = grafana_cloud_stack.mdekort.slug
 
   name = "email-infra"
-  role = "None"
+  role = "Editor"
 }
 
 resource "grafana_cloud_stack_service_account_token" "email_infra" {
