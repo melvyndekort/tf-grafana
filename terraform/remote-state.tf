@@ -1,8 +1,8 @@
 data "terraform_remote_state" "tf_cognito" {
   backend = "s3"
   config = {
-    bucket = var.tfstate_bucket
+    bucket = "mdekort-tfstate-075673041815"
     key    = "tf-cognito.tfstate"
-    region = var.aws_region
+    region = "eu-west-1"
   }
 }

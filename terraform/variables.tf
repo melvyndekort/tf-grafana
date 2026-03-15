@@ -22,12 +22,6 @@ variable "stack_description" {
   description = "Grafana Cloud stack description"
   type        = string
 }
-
-variable "tfstate_bucket" {
-  description = "S3 bucket for Terraform state"
-  type        = string
-}
-
 variable "cognito_callback_url" {
   description = "Cognito callback URL for Grafana"
   type        = string
