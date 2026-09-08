@@ -1,6 +1,6 @@
 # tf-grafana
 
-> For global standards, way-of-workings, and pre-commit checklist, see `~/.kiro/steering/behavior.md`
+> For global standards, way-of-workings, and pre-commit checklist, see `~/.claude/CLAUDE.md`
 
 ## Role
 
@@ -32,6 +32,10 @@ The `mdekort` provider depends on the stack being created first.
 - Backend: S3 key `tf-grafana.tfstate` in `mdekort-tfstate-075673041815`
 - Providers: AWS `~> 6.0`, Grafana `~> 4.8`
 - Secrets: KMS context `target=tf-grafana`
+
+## MCP servers
+
+This repo has a project-scoped `grafana` MCP server (`.mcp.json`) — see `~/.claude/references/mcp-catalog.md`.
 
 ## Related Repositories
 
