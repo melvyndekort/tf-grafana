@@ -14,6 +14,17 @@ This repo uses two Grafana provider aliases:
 
 The `mdekort` provider depends on the stack being created first.
 
+## Important: Editor role alone isn't enough for dashboard management
+
+A `grafana_cloud_stack_service_account` with `role = "Editor"` can fail to
+create/read dashboards on this stack with a `dashboards:read` permission
+error (hit this adding `kids_monitor`, while `email_infra`'s existing
+Editor-role account worked fine — inconsistent, not fully understood).
+Fix: add explicit `grafana_role_assignment` resources for
+`fixed:dashboards:writer` and `fixed:datasources:reader` on the service
+account (see `roles.tf`'s `kids_monitor_*` blocks for the pattern). If a
+new service account needs to manage dashboards, assume it'll need this too.
+
 ## Repository Structure
 
 - `terraform/main.tf` — Grafana Cloud stack and service accounts
@@ -26,6 +37,7 @@ The `mdekort` provider depends on the stack being created first.
 ## Outputs Consumed by Other Repos
 
 - `email-infra` — `grafana_url` + `email_infra_token` for dashboard management
+- `kids-monitor` — `grafana_url` + `kids_monitor_token` for dashboard management
 
 ## Terraform Details
 
