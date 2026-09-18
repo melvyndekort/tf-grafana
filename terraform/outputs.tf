@@ -12,6 +12,11 @@ output "email_infra_token" {
   sensitive = true
 }
 
+output "kids_monitor_token" {
+  value     = grafana_cloud_stack_service_account_token.kids_monitor.key
+  sensitive = true
+}
+
 output "loki_url" {
   value = grafana_cloud_stack.mdekort.logs_url
 }

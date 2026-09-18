@@ -38,3 +38,19 @@ resource "grafana_cloud_stack_service_account_token" "email_infra" {
   name               = "email-infra-dmarc"
   service_account_id = grafana_cloud_stack_service_account.email_infra.id
 }
+
+resource "grafana_cloud_stack_service_account" "kids_monitor" {
+  provider   = grafana.cloud
+  stack_slug = grafana_cloud_stack.mdekort.slug
+
+  name = "kids-monitor"
+  role = "Editor"
+}
+
+resource "grafana_cloud_stack_service_account_token" "kids_monitor" {
+  provider   = grafana.cloud
+  stack_slug = grafana_cloud_stack.mdekort.slug
+
+  name               = "kids-monitor-dashboard"
+  service_account_id = grafana_cloud_stack_service_account.kids_monitor.id
+}
