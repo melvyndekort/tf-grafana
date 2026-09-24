@@ -3,9 +3,9 @@ name: Terraform PR
 # Credential-free validation plus a read-only plan, both from the shared
 # workflows in melvyndekort/gha-workflows.
 #
-# Replaces the `if: github.actor != 'dependabot[bot]'` guard the old combined
-# workflow carried: the validate job needs no credentials, so running it for
-# Dependabot is what gives a bump real signal before auto-merge.
+# No `github.actor != 'dependabot[bot]'` guard: the validate job needs no
+# credentials, so running it for Dependabot is what gives a bump real signal
+# before auto-merge.
 
 on:
   pull_request:
